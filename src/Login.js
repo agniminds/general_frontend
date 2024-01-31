@@ -1,5 +1,5 @@
 import React from "react";
-//import 'bootsrap/dist/css/bootsrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function Login() {
     return (
