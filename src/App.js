@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Content from './components/Content';
 import Profile from './components/Profile';
-import './App.css'
 import Login from './Login';
 import Help from './components/Help';
 import Tournaments from './components/Tournaments';

@@ -19,13 +19,13 @@
 }
 
 
-.menu--list {
+.menu--listone {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.menu--list .item {
+.menu--listone .itemone {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -38,7 +38,7 @@
     color: #27374d;
 }
 
-.menu--list .item:hover {
+.menu--listone .itemone:hover {
     background: #27374d;
     color: #dde6ed;
 }

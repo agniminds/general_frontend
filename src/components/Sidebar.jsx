@@ -12,22 +12,22 @@ const Sidebar = () => {
                 <h2>ChessReco</h2>
             </div>
 
-            <div className="menu--list">
-                <Link to="/Content" className="item">
+            <div className="menu--listone">
+                <Link to="/Content" className="itemone">
 
                     <BiHome className="icon" />
                     Dashboard
                 </Link>
 
-                <Link to={"/Tournaments"} className="item">
+                <Link to={"/Tournaments"} className="itemone">
                     <BiTask className="icon" />
                     Tournaments
                 </Link>
-                <Link to={"/Recommendations"} className="item">
+                <Link to={"/Recommendations"} className="itemone">
                     <BiSolidReport className="icon" />
                     Recommendations
                 </Link>
-                <Link to={"/Help"} className="item">
+                <Link to={"/Help"} className="itemone">
                     <BiHelpCircle className="icon" />
                     Help
                 </Link>

@@ -10,7 +10,7 @@ const courses = [
 
     {
         title: 'Across the World',
-        icon: <BiWorld />,
+        icon: <BiWorld/>,
     },
 
     {
