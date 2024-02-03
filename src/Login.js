@@ -15,25 +15,41 @@ const Login = () => {
             password: password,
         };
 
-        fetch("http://localhost:8080/login", {
-            headers: {
-                "Content-Type": "application/json",
-            },
-            method: "post",
-            body: JSON.stringify(reqBody),
-        })
+        axios.post("/login", reqBody)
             .then((response) => {
-                if (response.status == 200)
-                    return Promise.all("Success");
-                else
-                    return Promise.reject("Invalid Login Attempt")
-
-
-            }).catch((message) => {
-                alert(message);
+                if (response.status === 200)
+                    alert("Success");
+            })
+            .catch((error) => {
+                alert(error.response ? error.response.data : "Invalid Login Attempt");
             });
-
     }
+
+    // function sendLoginRequest() {
+    //     const reqBody = {
+    //         username: username,
+    //         password: password,
+    //     };
+
+    //     fetch("/login", {
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         method: "post",
+    //         body: JSON.stringify(reqBody),
+    //     })
+    //         .then((response) => {
+    //             if (response.status == 200)
+    //                 return Promise.all("Success");
+    //             else
+    //                 return Promise.reject("Invalid Login Attempt")
+
+
+    //         }).catch((message) => {
+    //             alert(message);
+    //         });
+
+    // }
 
     return (
         <div className="login template d-flex justify-content-center align-items-center 100-vh bg-primary">

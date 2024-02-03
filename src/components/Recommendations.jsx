@@ -1,12 +1,11 @@
 import React from 'react'
+import Form from './Form'
 
-const Recommendations = () => {
+const Recommendations = ({ games }) => {
     return (
         <>
             <div>
-                <p>
-                    Recommendations
-                </p>
+                <Form games={games} />
             </div>
         </>
     )
