@@ -1,50 +1,56 @@
 import React, { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function FormOutput({ data, games }) {
-
-    const [finalState, setfinalState] = useState([])
+    const [finalState, setFinalState] = useState([]);
 
     useEffect(() => {
-        const makeRequest = async () => {
-            try {
-                const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${data.id}`);
-                if (!response.ok) {
-                    throw new Error('Data retrieval failed');
+        if (data.region && data.month) {
+            const makeRequest = async () => {
+                try {
+                    const url = `/tournaments/${data.region}/${data.month}`;
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error('Data retrieval failed');
+                    }
+                    const jsonData = await response.json();
+                    setFinalState(jsonData);
+                } catch (error) {
+                    console.error('Error:', error.message);
                 }
-                const jsonData = await response.json();
-                setfinalState(jsonData);
-                console.log(jsonData);
-            } catch (error) {
-                console.log('Error:', error.message);
-                console.log('There was an error encountered while loading this page');
-            }
+            };
+            makeRequest();
         }
-        makeRequest();
-    }, []);
+    }, [data.region, data.month]);
 
     return (
         <div className="container mt-5">
-            {finalState.length > 0 ? (
-                <div className="row">
-                    {finalState.map((item, index) => (
-                        <div className="col-md-4" key={index}>
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title">{item.title}</h5>
-                                    <p className="card-text">Region: {item.region}</p>
-                                    <p className="card-text">Month: {item.month}</p>
+            {Object.keys(finalState).length > 0 ? (
+                Object.entries(finalState).map(([key, value]) => (
+                    <div key={key}>
+                        <h2>{key}</h2> {/* Display the cluster name */}
+                        <div className="row">
+                            {value.map((tournament, index) => (
+                                <div className="col-md-4" key={index}>
+                                    <div className="card mb-3">
+                                        <div className="card-body">
+                                            <h5 className="card-title">{tournament.name}</h5>
+                                            <p className="card-text">Place: {tournament.place}</p>
+                                            <p className="card-text">Start Date: {tournament.startDate}</p>
+                                            <p className="card-text">End Date: {tournament.endDate}</p>
+                                            {/* Add more fields as needed */}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))
             ) : (
                 <div className="d-flex justify-content-center align-items-center vh-100">
-                    <h1 className="font-weight-bold big-text">No Tournaments</h1>
+                    <h1>No Tournaments Found</h1>
                 </div>
             )}
         </div>
     );
 }
-
