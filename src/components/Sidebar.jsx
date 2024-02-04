@@ -1,10 +1,19 @@
 import React from "react";
 import { BiHome, BiBookAlt, BiMessage, BiSolidReport, BiStats, BiTask, BiHelpCircle } from 'react-icons/bi';
 import '../styles/sidebar.css';
-import { Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 
 
 const Sidebar = () => {
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('isAuthenticated'); // Clear the authentication flag
+        navigate('/login'); // Redirect to login
+    };
+
+
     return (
         <div className="menu">
             <div className="logo">
@@ -13,7 +22,7 @@ const Sidebar = () => {
             </div>
 
             <div className="menu--listone">
-                <Link to="/Content" className="itemone">
+                <Link to="/" className="itemone">
 
                     <BiHome className="icon" />
                     Dashboard
@@ -31,6 +40,10 @@ const Sidebar = () => {
                     <BiHelpCircle className="icon" />
                     Help
                 </Link>
+                <button onClick={handleLogout} className="itemone">
+                    <BiHelpCircle className="icon" />
+                    Logout
+                </button>
 
 
 
@@ -40,8 +53,6 @@ const Sidebar = () => {
 
         </div>
     );
-
-
 
 };
 

@@ -60,7 +60,7 @@ export default function Form({ games }) {
                         ))}
                     </select>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                {/*<button type="submit" className="btn btn-primary">Submit</button>*/}
             </form>
             {/* Pass formData to FormOutput component */}
             <FormOutput data={formData} games={games} />

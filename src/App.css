@@ -1,9 +1,10 @@
 .dashboard {
   display: flex;
   gap: 20px;
+  min-height: 100vh;
 }
 
-.dashboard--content {
+/* .dashboard--content {
   background: #fff;
   flex: 1;
   border-radius: 20px;
@@ -13,4 +14,4 @@
   justify-content: space-between;
 
 
-}
+} */
