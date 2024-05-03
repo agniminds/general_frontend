@@ -10,7 +10,7 @@ import games from './components/gameData';
 import './App.css';
 import './styles/sidebar.css';
 import './styles/content.css';
-
+import Signup from './Signup';
 
 
 // Define the PrivateRoute component
@@ -25,7 +25,7 @@ const SidebarLayout = () => {
     <div className="dashboard">
       <Sidebar />
       <div className="content">
-        <Outlet /> {/* This will render the nested route components */}
+        <Outlet /> { }
       </div>
     </div>
   );
@@ -38,6 +38,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<SidebarLayout />}>
             <Route index element={<Content />} /> {/* The main dashboard view */}

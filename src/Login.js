@@ -39,6 +39,11 @@ const Login = () => {
         sendLoginRequest();
     };
 
+    // Function to handle redirection to the sign up page
+    const redirectToSignUp = () => {
+        navigate('/signup');
+    };
+
     return (
         <div className="login-template d-flex justify-content-center align-items-center vh-100 bg-primary">
             <div className="form-container p-5 rounded bg-white">
@@ -70,10 +75,10 @@ const Login = () => {
                         <button type="submit" className="btn btn-primary">
                             Sign in
                         </button>
+                        <button type="button" className="btn btn-primary" onClick={redirectToSignUp}>
+                            Sign Up
+                        </button>
                     </div>
-                    <p className="text-right mt-2">
-                        Forgot <a href="#forgot-password">Password?</a> | <a href="#sign-up">Sign up</a>
-                    </p>
                 </form>
             </div>
         </div>

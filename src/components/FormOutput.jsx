@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function FormOutput({ data, games }) {
+// Utility function to check for valid URLs
+const isValidUrl = (url) => {
+    try {
+        new URL(url);
+        return true;
+    } catch (_) {
+        return false;
+    }
+};
+
+export default function FormOutput({ data }) {
     const [finalState, setFinalState] = useState([]);
 
     useEffect(() => {
@@ -38,7 +48,18 @@ export default function FormOutput({ data, games }) {
                                             <p className="card-text">Place: {tournament.place}</p>
                                             <p className="card-text">Start Date: {tournament.startDate}</p>
                                             <p className="card-text">End Date: {tournament.endDate}</p>
-                                            {/* Add more fields as needed */}
+                                            <p className="card-text">
+                                                Website:
+                                                {tournament.website && isValidUrl(tournament.website) ?
+                                                    <a href={tournament.website} target="_blank" rel="noopener noreferrer">Visit</a> :
+                                                    "Not available"}
+                                            </p>
+                                            <p className="card-text">
+                                                Regulations:
+                                                {tournament.regulations && isValidUrl(tournament.regulations) ?
+                                                    <a href={tournament.regulations} target="_blank" rel="noopener noreferrer">View Regulations</a> :
+                                                    "Not available"}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -54,3 +75,4 @@ export default function FormOutput({ data, games }) {
         </div>
     );
 }
+

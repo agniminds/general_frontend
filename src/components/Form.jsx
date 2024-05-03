@@ -23,7 +23,7 @@ export default function Form({ games }) {
         // This just prevents the default form submission behavior
     };
 
-    const regions = ['Europe', 'America', 'Asia', 'Africa']; // Example list of regions
+    const regions = ['Europe', 'America', 'Asia', 'Africa'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; // List of months
 
     return (
